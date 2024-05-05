@@ -39,32 +39,19 @@ import logo from "../Images/logo-sm.png";
 
 <script>
   let burger = document.getElementById("burger"),
-    nav = document.getElementById("main-nav"),
-    slowmo = document.getElementById("slowmo");
+    nav = document.getElementById("main-nav");
 
   burger.addEventListener("click", function (e) {
     this.classList.toggle("is-open");
     nav.classList.toggle("is-open");
-  });
 
-  slowmo.addEventListener("click", function (e) {
-    this.classList.toggle("is-slowmo");
-  });
-
-  /* Onload demo - dirty timeout */
-  let clickEvent = new Event("click");
-
-  window.addEventListener("load", function (e) {
-    slowmo.dispatchEvent(clickEvent);
-    burger.dispatchEvent(clickEvent);
-
-    setTimeout(function () {
-      burger.dispatchEvent(clickEvent);
-
-      setTimeout(function () {
-        slowmo.dispatchEvent(clickEvent);
-      }, 3500);
-    }, 5500);
+    // If the menu is open, prevent scrolling on the body
+    if (nav.classList.contains("is-open")) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        // If the menu is closed, allow scrolling again
+        document.body.style.overflow = 'auto';
+      }
   });
 </script>
 
@@ -102,7 +89,8 @@ import logo from "../Images/logo-sm.png";
     left: 0;
     bottom: 0;
     text-align: center;
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(2px); 
     opacity: 0;
     z-index: -1;
     visibility: hidden;
@@ -185,7 +173,7 @@ import logo from "../Images/logo-sm.png";
   .main-nav a {
     display: block;
     padding: 12px 0;
-    color: #5a3b5d;
+    color: var(--blue);
     font-size: 1.4em;
     text-decoration: none;
     font-weight: bold;
