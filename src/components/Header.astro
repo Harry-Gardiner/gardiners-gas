@@ -45,12 +45,15 @@ import logo from "../Images/logo-sm.png";
     this.classList.toggle("is-open");
     nav.classList.toggle("is-open");
 
-    // If the menu is open, prevent scrolling on the body
-    if (nav.classList.contains("is-open")) {
+     // If the menu is open, prevent scrolling on the body
+     if (nav.classList.contains("is-open")) {
         document.body.style.overflow = 'hidden';
+        // Add a right padding to the body equal to the width of the scrollbar
+        document.body.style.paddingRight = window.innerWidth - document.documentElement.clientWidth + 'px';
       } else {
-        // If the menu is closed, allow scrolling again
+        // If the menu is closed, allow scrolling again and remove the right padding
         document.body.style.overflow = 'auto';
+        document.body.style.paddingRight = '0px';
       }
   });
 </script>
@@ -110,7 +113,7 @@ import logo from "../Images/logo-sm.png";
     top: 0;
     bottom: 0;
     left: 0;
-    right: -15px;
+    right: 0;
     background: var(--yellow);
     transform-origin: 0 0;
     transform: skew(-14deg) translateX(-120%);
@@ -125,7 +128,7 @@ import logo from "../Images/logo-sm.png";
   .main-nav ul {
     display: inline-flex;
     flex-direction: column;
-    height: 93%; /* Should be 100%, but we have a notice message :D */
+    height: 100%;
     align-items: flex-end;
     justify-content: center;
     transform: translateX(-18%) skew(-16deg);
