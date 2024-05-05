@@ -3,52 +3,247 @@ import { Image } from "astro:assets";
 import logo from "../Images/logo-sm.png";
 ---
 
-    <a href="#maincontent" class="skip-link">Skip to main content</a>
-    <header class='header'>
-        <div class="container">
-            <a href="#">
-                <div class="header__logo">
-                    <Image src={logo} alt="Gardiner Gas logo"/>
-                </div>
-            </a>
-            <nav>
-                <input id="navcheckbox" class="checkbox" type="checkbox" name="" aria-controls="menu" />
-                <div class="hamburger-lines">
-                    <span class="line line--1"></span>
-                    <span class="line line--2"></span>
-                    <span class="line line--3"></span>
-                </div>
-                <p class='call'><a href="tel:077000000">Call 0770000000</a></p>
-                <ul role="list" id="menu" class="nav_items" role="menu" aria-labelledby="navcheckbox">
-                    <li class="nav_item" role="menuitem">
-                        <a href="#about">About</a>
-                    </li>
-                    <li class="nav_item" role="menuitem">
-                        <a href="#services">Services</a>
-                    </li>
-                    <li class="nav_item" role="menuitem">
-                        <a href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<a href="#maincontent" class="skip-link">Skip to main content</a>
+
+<header class="header">
+  <div class="container">
+    <a href="#">
+      <div class="header__logo">
+        <Image src={logo} alt="Gardiner Gas logo" />
+      </div>
+    </a>
+    <div>
+      <button id="burger" class="open-main-nav">
+        <span class="burger"></span>
+      </button>
+      <p class='call'><a href="tel:077000000">Call 0770000000</a></p>
+      <nav class="main-nav" id="main-nav">
+        <ul role="list">
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#services">Services</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  let burger = document.getElementById("burger"),
+    nav = document.getElementById("main-nav"),
+    slowmo = document.getElementById("slowmo");
+
+  burger.addEventListener("click", function (e) {
+    this.classList.toggle("is-open");
+    nav.classList.toggle("is-open");
+  });
+
+  slowmo.addEventListener("click", function (e) {
+    this.classList.toggle("is-slowmo");
+  });
+
+  /* Onload demo - dirty timeout */
+  let clickEvent = new Event("click");
+
+  window.addEventListener("load", function (e) {
+    slowmo.dispatchEvent(clickEvent);
+    burger.dispatchEvent(clickEvent);
+
+    setTimeout(function () {
+      burger.dispatchEvent(clickEvent);
+
+      setTimeout(function () {
+        slowmo.dispatchEvent(clickEvent);
+      }, 3500);
+    }, 5500);
+  });
+</script>
 
 <style lang="scss">
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: blue;
-      color: white;
-      padding: 8px;
-      z-index: 101;
-      transition: top 0.3s;
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--blue);
+    color: var(--white);
+    padding: 8px;
+    z-index: 101;
+    transition: top 0.3s;
 
-      &:focus {
-        top: 0;
-      }
+    &:focus {
+      top: 0;
     }
+  }
 
+  .header {
+    min-height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+  }
 
+  .call {
+    display: none;
+  }
+  .main-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    background: var(--white);
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+    transition: all 0.375s;
+  }
+
+  .main-nav.is-open {
+    opacity: 1;
+    z-index: 100;
+    visibility: visible;
+  }
+
+  /* Yellow band effect */
+  .main-nav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: -15px;
+    background: var(--yellow);
+    transform-origin: 0 0;
+    transform: skew(-14deg) translateX(-120%);
+    transition: all 0.275s 0.1s;
+  }
+
+  .main-nav.is-open::before {
+    transform: skew(-14deg) translateX(0);
+  }
+
+  /* Skewing effect on menu links */
+  .main-nav ul {
+    display: inline-flex;
+    flex-direction: column;
+    height: 93%; /* Should be 100%, but we have a notice message :D */
+    align-items: flex-end;
+    justify-content: center;
+    transform: translateX(-18%) skew(-16deg);
+  }
+
+  .main-nav li {
+    display: block;
+    margin: 0.5rem 0;
+    text-align: right;
+    transform: skew(16deg);
+  }
+
+  /* Apparition effect on links */
+  .main-nav a {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  .main-nav.is-open a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .main-nav li:nth-child(1) a {
+    transition: all 275ms 175ms;
+  }
+  .main-nav li:nth-child(2) a {
+    transition: all 275ms 225ms;
+  }
+  .main-nav li:nth-child(3) a {
+    transition: all 275ms 275ms;
+  }
+  .main-nav li:nth-child(4) a {
+    transition: all 275ms 325ms;
+  }
+  .main-nav li:nth-child(5) a {
+    transition: all 275ms 375ms;
+  }
+
+  /* Decoration */
+  .main-nav ul,
+  .main-nav li {
+    list-style: none;
+    padding: 0;
+  }
+  .main-nav a {
+    display: block;
+    padding: 12px 0;
+    color: #5a3b5d;
+    font-size: 1.4em;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* Burger Style: @see: https://codepen.io/CreativeJuiz/full/oMZNXy */
+  .open-main-nav {
+    position: absolute;
+    top: 18px;
+    padding-top: 20px;
+    right: 15px;
+    z-index: 1000;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .open-main-nav:focus {
+    outline: none;
+  }
+  .burger {
+    position: relative;
+    display: block;
+    width: 28px;
+    height: 4px;
+    margin: 0 auto;
+    background: var(--blue);
+    transform: skew(5deg);
+    transition: all 0.275s;
+  }
+
+  .burger:after,
+  .burger:before {
+    content: "";
+    display: block;
+    height: 100%;
+    background: var(--blue);
+    transition: all 0.275s;
+  }
+
+  .burger:after {
+    transform: translateY(-12px) translateX(-2px) skew(-20deg);
+  }
+
+  .burger:before {
+    transform: translateY(-16px) skew(-10deg);
+  }
+
+  /* Toggle State part */
+  .is-open .burger {
+    transform: skew(5deg) translateY(-8px) rotate(-45deg);
+  }
+
+  .is-open .burger:before {
+    transform: translateY(0px) skew(-10deg) rotate(75deg);
+  }
+
+  .is-open .burger:after {
+    transform: translateY(-12px) translateX(10px) skew(-20deg);
+    opacity: 0;
+  }
 </style>
