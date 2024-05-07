@@ -1,0 +1,77 @@
+/*
+* All things related to fonts and typography
+* 
+* Font family: Inter
+* Common weights: 300 thin, 400 regular, 700 bold
+*/
+
+.inter-thin {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+.inter-regular {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+.inter-bold {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+body {
+  @extend .inter-regular;  
+  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @extend .inter-bold;
+}
+
+// Font sizes
+h1,
+.h1 {
+  font-size: var(--ft-xxl); 
+}
+
+h2,
+.h2 {
+  font-size: var(--ft-xl); 
+}
+
+h3,
+.h3 {
+  font-size: var(--ft-lg); 
+}
+
+h4,
+.h4 {
+  font-size: var(--ft-md); 
+}
+
+h5,
+.h5 {
+  font-size: var(--ft-sm);
+}
+
+h6,
+.h6 {
+  font-size: var(--ft-xs); 
+}
