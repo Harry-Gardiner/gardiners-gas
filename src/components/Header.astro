@@ -84,6 +84,15 @@ import logo from "../Images/logo-sm.png";
     top: 0;
     width: 100vw;
 
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(0, 0, 0, 0.1); /* Light grey color to mimic box-shadow */
+    }
     &__logo {
       display: block;
       width: fit-content;
@@ -225,7 +234,7 @@ import logo from "../Images/logo-sm.png";
     }
 
     &:after {
-      transform: translateY(-12px) translateX(-2px) skew(-20deg);
+      transform: translateY(-12px) translateX(-2px);
     }
 
     &:before {
