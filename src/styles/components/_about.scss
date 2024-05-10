@@ -1,0 +1,22 @@
+.about {
+    text-align: center;
+
+    @include media(md) {
+        text-align: left;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: $sp-md;
+    }
+
+    &__gas-safe {
+        margin-top: $sp-md;
+        display: flex;
+        justify-content: center;
+
+        @include media(lg) {
+            margin-top: 0;
+            align-items: flex-start;
+            margin-left: auto;
+        }
+    }
+}

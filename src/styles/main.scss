@@ -8,3 +8,9 @@
 @import 'components/header';
 @import 'components/hero';
 @import 'components/button';
+@import 'components/about';
+
+body {
+    color: $blue;
+    @extend .inter-regular;
+}
