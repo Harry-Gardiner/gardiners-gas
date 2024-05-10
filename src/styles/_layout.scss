@@ -30,17 +30,17 @@ body {
       flex: 1;
 
       section {
-        padding-top: var(--sp-xl);
-        padding-bottom: var(--sp-xl);
+        padding-top: $sp-xl;
+        padding-bottom: $sp-xl;
 
         @include media(md) {
-          padding-top: var(--sp-xxl);
-          padding-bottom: var(--sp-xxl);
+          padding-top: $sp-xxl;
+          padding-bottom: $sp-xxl;
         }
 
         h2 {
           text-align: center;
-          margin-bottom: var(--sp-lg);
+          margin-bottom: $sp-lg;
 
           @include media(md) {
             text-align: left;
@@ -56,7 +56,7 @@ body {
   See https://piccalil.li/quick-tip/flow-utility/
 */
 .flow > * + * {
-  margin-top: var(--flow-space, var(--sp-sm));
+  margin-top: var(--flow-space, $sp-sm);
 }
 
 /*
