@@ -64,5 +64,35 @@
 
     .button {
         margin-top: $sp-lg;
+        
     }
+
+    .button {
+        transition: all 0.5s;
+        position: relative;
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        &::after {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            border-radius: inherit;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: all .4s;
+            background-color: $yellow;
+        }
+
+        &:hover::after {
+            transform: scaleX(1.2) scaleY(1.4);
+            opacity: 0;
+        }
+      }
 }
