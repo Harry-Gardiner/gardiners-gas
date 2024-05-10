@@ -239,6 +239,12 @@
             font-weight: 400;
         }
     }
+
+    @include media(lg) {
+        ul {
+            gap: $sp-lg;
+        }
+    }
 }
 
 .open-main-nav {
