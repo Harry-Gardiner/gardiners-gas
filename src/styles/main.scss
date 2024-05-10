@@ -35,3 +35,6 @@ $xl: 1200px; // Extra large devices (large desktops, 1200px and up)
 @import 'media-query';
 @import 'typography';
 @import 'layout';
+
+// Components
+@import 'components/_header';
