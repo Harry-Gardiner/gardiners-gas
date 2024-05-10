@@ -38,7 +38,7 @@ import logo from "../Images/logo-sm.png";
 </header>
 
 <script>
-  let burger = document.getElementById("burger"),
+  const burger = document.getElementById("burger"),
     nav = document.getElementById("main-nav");
 
   burger.addEventListener("click", function (e) {
@@ -55,6 +55,17 @@ import logo from "../Images/logo-sm.png";
         document.body.style.overflow = 'auto';
         document.body.style.paddingRight = '0px';
       }
+  });
+
+  document.querySelectorAll('.main-nav a').forEach(item => {
+    item.addEventListener('click', event => {
+      setTimeout(() => {
+        burger.classList.remove("is-open");
+        nav.classList.remove("is-open");
+        document.body.style.overflow = 'auto';
+        document.body.style.paddingRight = '0px';
+      }, 500);
+    });
   });
 </script>
 
@@ -91,7 +102,7 @@ import logo from "../Images/logo-sm.png";
       left: 0;
       right: 0;
       height: 2px;
-      background: rgba(0, 0, 0, 0.1); /* Light grey color to mimic box-shadow */
+      background: rgba(0, 0, 0, 0.1);
     }
     &__logo {
       display: block;
