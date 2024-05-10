@@ -48,30 +48,30 @@ h6 {
 // Font sizes
 h1,
 .h1 {
-  font-size: var(--ft-xxl); 
+  font-size: $ft-xxl; 
 }
 
 h2,
 .h2 {
-  font-size: var(--ft-xl); 
+  font-size: $ft-xl; 
 }
 
 h3,
 .h3 {
-  font-size: var(--ft-lg); 
+  font-size: $ft-lg; 
 }
 
 h4,
 .h4 {
-  font-size: var(--ft-md); 
+  font-size: $ft-md; 
 }
 
 h5,
 .h5 {
-  font-size: var(--ft-sm);
+  font-size: $ft-sm;
 }
 
 h6,
 .h6 {
-  font-size: var(--ft-xs); 
+  font-size: $ft-xs; 
 }
