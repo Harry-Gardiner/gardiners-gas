@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets";
+import logo from "../Images/logo-sm.png";
+---
+
+<a href="#maincontent" class="skip-link">Skip to main content</a>
+
+<header class="header">
+  <div class="container">
+    <a class="header__logo" href="#">
+      <div>
+        <Image src={logo} alt="Gardiner Gas logo" />
+      </div>
+    </a>
+    <div>
+      <button id="burger" class="open-main-nav">
+        <span class="burger"></span>
+      </button>
+      <div class="main-nav-wrapper">
+        <p class='call'><a href="tel:077000000">Call 0770000000</a></p>
+        <nav class="main-nav" id="main-nav">
+          <ul role="list">
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#services">Services</a>
+            </li>
+            <li>
+              <a href="#contact">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const burger = document.getElementById("burger"),
+    nav = document.getElementById("main-nav");
+
+  burger.addEventListener("click", function (e) {
+    this.classList.toggle("is-open");
+    nav.classList.toggle("is-open");
+
+     // If the menu is open, prevent scrolling on the body
+     if (nav.classList.contains("is-open")) {
+        document.body.style.overflow = 'hidden';
+        // Add a right padding to the body equal to the width of the scrollbar
+        document.body.style.paddingRight = window.innerWidth - document.documentElement.clientWidth + 'px';
+      } else {
+        // If the menu is closed, allow scrolling again and remove the right padding
+        document.body.style.overflow = 'auto';
+        document.body.style.paddingRight = '0px';
+      }
+  });
+
+
+  // Close the menu when a link is clicked
+  document.querySelectorAll('.main-nav a').forEach(item => {
+    item.addEventListener('click', event => {
+      setTimeout(() => {
+        burger.classList.remove("is-open");
+        nav.classList.remove("is-open");
+        document.body.style.overflow = 'auto';
+        document.body.style.paddingRight = '0px';
+      }, 500);
+    });
+  });
+</script>
