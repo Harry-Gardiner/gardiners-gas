@@ -1,0 +1,47 @@
+.services {
+    background-color: $blue;
+    color: $white;
+    position: relative;
+    overflow: visible;
+    margin-top: $sp-lg;
+    margin-bottom: $sp-lg;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    &::before {
+      border-width: 0 100vw 50px 0;
+      border-color: transparent $blue transparent transparent;
+      top: -49.3px;
+      left: 0;
+      transform: rotate(180deg);
+    }
+
+    &::after {
+      border-width: 50px 100vw 0 0;
+      border-color: $blue transparent transparent transparent;
+      bottom: -49.3px;
+      left: 0;
+      transform: scale(-1, 1);
+    }
+
+    &__wrapper {
+        display: grid;
+        gap: $sp-md;
+
+        @include media(md) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: $sp-xl;
+        }
+
+        @include media(lg) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
