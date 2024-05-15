@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets"
+
+// Image imports
+import gague from "../images/example_work/gague.webp"
+import gas from "../images/example_work/meter.webp"
+import hob from "../images/example_work/hob.webp"
+import pipes from "../images/example_work/pipes.webp"
+import pipes2 from "../images/example_work/pipes-2.webp"
+import tap from "../images/example_work/tap.webp"
+
+---
+<section id="gallery" class="gallery">
+    <h2>Our Work</h2>
+    <div class="gallery__grid">
+        <div class="gallery__item tall">
+            <Image src={gague} alt="Gallery Image 1" />
+        </div>
+        <div class="gallery__item wide">
+            <Image src={gas} alt="Gallery Image 2" />
+        </div>
+        <div class="gallery__item tall">
+            <Image src={hob} alt="Gallery Image 3" />
+        </div>
+        <div class="gallery__item tall">
+            <Image src={pipes} alt="Gallery Image 4" />
+         </div>
+        <div class="gallery__item wide">
+            <Image src={pipes2} alt="Gallery Image 5" />
+         </div>
+        <div class="gallery__item">
+            <Image src={tap} alt="Gallery Image 6" />
+        </div>
+    </div>
+</section>
