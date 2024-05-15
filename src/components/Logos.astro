@@ -1,0 +1,27 @@
+---
+import type { ImageMetadata } from "astro";
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/images/boiler_logos/*.{jpeg,jpg,png,gif}"
+);
+
+const fetchImages = async () => {
+  const imagePromises = Object.entries(images).map(async ([path, resolver]) => {
+    const module = await resolver();
+    return { path, src: module.default.src };
+  });
+  return Promise.all(imagePromises);
+};
+
+const imageObjects = await fetchImages();
+---
+
+<section class="logos">
+    <div class="container">
+        <div class="logos__grid">
+            {imageObjects.map(image => (
+                <img src={image.src} alt="Logo" />
+            ))}
+        </div>
+    </div>
+</section>
