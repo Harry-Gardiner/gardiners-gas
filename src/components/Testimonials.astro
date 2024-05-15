@@ -1,0 +1,92 @@
+---
+const testimonialsData = [
+    {
+        name: "John Doe",
+        date: "2022-01-01",
+        stars: 5,
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco..",
+    },
+    {
+        name: "Jane Doe",
+        date: "2022-02-01",
+        stars: 4,
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    },
+    {
+        name: "John Smith",
+        date: "2022-03-01",
+        stars: 5,
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+        name: "Jane Smith",
+        date: "2022-04-01",
+        stars: 4,
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    },
+    {
+        name: "John Doe",
+        date: "2022-05-01",
+        stars: 5,
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+        name: "Jane Doe",
+        date: "2022-06-01",
+        stars: 4,
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    },
+];
+
+import Testimonial from "./Testimonial.astro";
+---
+
+<section id="testimonials" class="testimonials overflow">
+    <div class="container">
+        <h2>Testimonials</h2>   
+        <!-- Slider main container -->
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                {testimonialsData.map((testimonial, index) => (
+                    <div class="swiper-slide">
+                        <Testimonial
+                            key={index}
+                            name={testimonial.name}
+                            date={testimonial.date}
+                            stars={testimonial.stars}
+                        >
+                            {testimonial.text}
+                        </Testimonial>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import Swiper from "swiper";
+
+    // Import Swiper modules
+    import { Navigation, Mousewheel, Autoplay } from "swiper/modules";
+
+    // Import Swiper styles
+    import "swiper/css";
+    import "swiper/css/navigation";
+
+    const swiper = new Swiper(".swiper", {
+        speed: 400,
+        spaceBetween: 30,
+        slidesPerView: 1.5,
+        centeredSlides: true,
+        initialSlide: 2,
+        autoplay: {
+            delay: 6000,
+            disableOnInteraction: false,
+        },
+        loop: true,
+        modules: [Navigation, Mousewheel, Autoplay],
+    });
+</script>
