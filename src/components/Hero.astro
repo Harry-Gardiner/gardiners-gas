@@ -13,6 +13,6 @@ import heroImage from "../images/gas-flame.webp";
     </div>
     <div class="hero__image">
       <Image src={heroImage} alt="gas flames"  widths={[240, 540, 720, heroImage.width]}
-      sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${heroImage.width}px`} />
+      sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${heroImage.width}px`} loading="eager" />
     </div>
   </section>
