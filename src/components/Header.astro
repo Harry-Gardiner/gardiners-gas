@@ -37,15 +37,22 @@ import logo from "../images/logo-sm.png";
 </header>
 
 <script>
+  // Function to check if the current device is considered mobile based on viewport width
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
+
   const burger = document.getElementById("burger"),
     nav = document.getElementById("main-nav");
 
   burger.addEventListener("click", function (e) {
-    this.classList.toggle("is-open");
-    nav.classList.toggle("is-open");
+    // Only execute if on mobile
+    if (isMobile()) {
+      this.classList.toggle("is-open");
+      nav.classList.toggle("is-open");
 
-     // If the menu is open, prevent scrolling on the body
-     if (nav.classList.contains("is-open")) {
+      // If the menu is open, prevent scrolling on the body
+      if (nav.classList.contains("is-open")) {
         document.body.style.overflow = 'hidden';
         // Add a right padding to the body equal to the width of the scrollbar
         document.body.style.paddingRight = window.innerWidth - document.documentElement.clientWidth + 'px';
@@ -54,18 +61,20 @@ import logo from "../images/logo-sm.png";
         document.body.style.overflow = 'auto';
         document.body.style.paddingRight = '0px';
       }
+    }
   });
-
 
   // Close the menu when a link is clicked
   document.querySelectorAll('.main-nav a').forEach(item => {
     item.addEventListener('click', event => {
-      setTimeout(() => {
-        burger.classList.remove("is-open");
-        nav.classList.remove("is-open");
-        document.body.style.overflow = 'auto';
-        document.body.style.paddingRight = '0px';
-      }, 500);
+      if (isMobile()) {
+        setTimeout(() => {
+          burger.classList.remove("is-open");
+          nav.classList.remove("is-open");
+          document.body.style.overflow = 'auto';
+          document.body.style.paddingRight = '0px';
+        }, 500);
+      }
     });
   });
 </script>

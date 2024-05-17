@@ -17,8 +17,10 @@
 @import 'components/gallery';
 @import 'components/contact';
 @import 'components/footer';
+@import 'components/call-btn';
 
 body {
     color: $blue;
     @extend .inter-regular;
+    overflow-x: hidden;
 }

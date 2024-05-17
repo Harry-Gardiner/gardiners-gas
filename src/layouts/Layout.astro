@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import CallBtn from "../components/CallBtn.astro";
 
 interface Props {
   title: string;
@@ -29,6 +30,7 @@ const { title } = Astro.props;
   </head>
   <body>
     <Header />
+    <CallBtn />
     <slot />
     <Footer />
   </body>
