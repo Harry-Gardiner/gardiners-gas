@@ -12,6 +12,9 @@
     align-items: center;
     justify-content: center;
 
+    transform: translateX(200%);
+    animation: slideInFromRight 1s ease-out 6s forwards;
+
     @include media(md) {
         display: none;
     }
@@ -31,3 +34,12 @@
         }
     }
 }
+
+@keyframes slideInFromRight {
+    from {
+      transform: translateX(200%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
