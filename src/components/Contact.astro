@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets"
+const mobile = '07788453423'
+const home = '01305260897'
+const email = 'Gardinergas@gmail.com'
+
+import iconPhone from '../images/icons/icon-phone.png'
+import iconEmail from '../images/icons/icon-email.png'
+import iconLocation from '../images/icons/icon-location-pin.png'
+import map from '../images/dorset_map_area.webp'
+---
+<section id="contact" class="contact overflow">
+    <div class="container">
+        <div class="contact__content flow">
+            <h2>Contact Us</h2>
+            <p>For a free quote or any other enquiry, please get in touch with us. We are happy to help.</p>
+            <div class="contact__details">
+                <div class="contact__details--item">
+                    <Image src={iconPhone} alt="phone"/>
+                    <div>
+                        <p class="contact__mobile"><a href={`tel:${mobile}`}>Mobile: {mobile}</a></p>
+                        <p><a href={`tel:${home}`}>Home: {home}</a></p>
+                    </div>
+                </div>
+                <div class="contact__details--item">
+                    <Image src={iconEmail} alt="email"/>
+                    <p><a href={`mailto:${email}`}>Email: {email}</a></p>
+                </div>
+            </div>
+            <div class="contact__location">
+                <Image src={iconLocation} alt="location"/>
+                <Image class="contact__location__map" src={map} alt="Work area covered inc Dorchester, Bridport, Wareham, Crossways"/>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,45 @@
+.call-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background-color: $yellow;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translateX(200%);
+    animation: slideInFromRight 1s ease-out 6s forwards;
+
+    @include media(md) {
+        display: none;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: $blue;
+        text-decoration: none;
+        font-size: 12px;
+
+        img {
+            width: 35px;
+            height: 35px;
+        }
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+      transform: translateX(200%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }

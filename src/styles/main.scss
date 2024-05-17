@@ -1,0 +1,26 @@
+@import 'reset';
+@import 'variables';
+@import 'media-query';
+@import 'typography';
+@import 'layout';
+
+// Components
+@import 'components/header';
+@import 'components/hero';
+@import 'components/button';
+@import 'components/about';
+@import 'components/services';
+@import 'components/service';
+@import 'components/testimonials';
+@import 'components/testimonial';
+@import 'components/logos';
+@import 'components/gallery';
+@import 'components/contact';
+@import 'components/footer';
+@import 'components/call-btn';
+
+body {
+    color: $blue;
+    @extend .inter-regular;
+    overflow-x: hidden;
+}

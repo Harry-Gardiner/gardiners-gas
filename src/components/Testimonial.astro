@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets"
+import quote from "../images/quote.png"
+import star from "../images/star.svg"
+
+const { children, stars, name, date } = Astro.props
+---
+<div class="testimonial">
+    <div class="testimonial__content flow">
+        <Image src={quote} alt="quote" width={35} height={31} />
+        <p><slot/></p>
+        <div class="testimonial__info">
+            <div class="testimonial__stars">
+                {Array.from({ length: stars }, (_, i) => (
+                    <Image src={star} alt="star" width={20} height={20} />
+                ))}
+            </div>
+            <div class="testimonial__name">
+                <p>{name}, {date}</p>
+            </div>
+        </div>
+    </div>
+    </div>
