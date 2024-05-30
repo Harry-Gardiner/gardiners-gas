@@ -2,7 +2,7 @@
 import type { ImageMetadata } from "astro";
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-    "/src/images/boiler_logos/*.{jpeg,jpg,png,gif}"
+    "/src/image_assets/boiler_logos/*.{jpeg,jpg,png,gif}"
 );
 
 const fetchImages = async () => {

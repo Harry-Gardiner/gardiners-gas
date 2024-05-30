@@ -11,11 +11,11 @@ interface Props {
 
 const { icon, iconAlt, title, text } = Astro.props;
 const images = import.meta.glob<{ default: ImageMetadata }>(
-    "/src/images/icons/*.{jpeg,jpg,png,gif}"
+    "/src/image_assets/icons/*.{jpeg,jpg,png,gif}"
 );
 if (!images[icon])
     throw new Error(
-        `"${icon}" does not exist in glob: "src/images/icons/*.{jpeg,jpg,png,gif}"`
+        `"${icon}" does not exist in glob: "src/image_assets/icons/*.{jpeg,jpg,png,gif}"`
     );
 ---
 
